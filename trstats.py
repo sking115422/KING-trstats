@@ -248,38 +248,38 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
                     json_list_all.append(json_dict_all)
 
 
-        #Removing extra entries json_list
+        # #Removing extra entries json_list
 
-        for row in range(0, len(json_list) + 1):
-            try:
-                if json_list[row].get('hop') == json_list[row + 1].get('hop'):
-                    json_list.remove(json_list[row])
-            except:
-                pass
+        # for row in range(0, len(json_list) + 1):
+        #     try:
+        #         if json_list[row].get('hop') == json_list[row + 1].get('hop'):
+        #             json_list.remove(json_list[row])
+        #     except:
+        #         pass
 
-        for row in range(0, len(json_list) + 1):
-            try:
-                if json_list[row].get('hop') == json_list[row + 1].get('hop'):
-                    json_list.remove(json_list[row])
-            except:
-                pass
+        # for row in range(0, len(json_list) + 1):
+        #     try:
+        #         if json_list[row].get('hop') == json_list[row + 1].get('hop'):
+        #             json_list.remove(json_list[row])
+        #     except:
+        #         pass
 
         
-        #Removing extra entries json_list_all
+        # #Removing extra entries json_list_all
 
-        for row in range(0, len(json_list_all) + 1):
-            try:
-                if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
-                    json_list_all.remove(json_list_all[row])
-            except:
-                pass
+        # for row in range(0, len(json_list_all) + 1):
+        #     try:
+        #         if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
+        #             json_list_all.remove(json_list_all[row])
+        #     except:
+        #         pass
 
-        for row in range(0, len(json_list_all) + 1):
-            try:
-                if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
-                    json_list_all.remove(json_list_all[row])
-            except:
-                pass
+        # for row in range(0, len(json_list_all) + 1):
+        #     try:
+        #         if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
+        #             json_list_all.remove(json_list_all[row])
+        #     except:
+        #         pass
 
 
     print('')
@@ -434,6 +434,7 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
 
 
     print('Boxplots generated successfully!')
+    print('')
 
 
 if __name__ == '__main__':
