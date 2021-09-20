@@ -75,6 +75,12 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
         
         txt_file_dir =  TEST_DIR
 
+        num_times_run = 0
+        for filename in os.listdir(txt_file_dir):
+            num_times_run = num_times_run + 1
+
+
+
     for filename in os.listdir(txt_file_dir):
 
         with open(os.path.join(txt_file_dir, filename), 'r') as file:
@@ -248,38 +254,37 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
                     json_list_all.append(json_dict_all)
 
 
-        # #Removing extra entries json_list
+        #Removing extra entries json_list
 
-        # for row in range(0, len(json_list) + 1):
-        #     try:
-        #         if json_list[row].get('hop') == json_list[row + 1].get('hop'):
-        #             json_list.remove(json_list[row])
-        #     except:
-        #         pass
+        for row in range(0, len(json_list) + 1):
+            try:
+                if json_list[row].get('hop') == json_list[row + 1].get('hop'):
+                    json_list.remove(json_list[row])
+            except:
+                pass
 
-        # for row in range(0, len(json_list) + 1):
-        #     try:
-        #         if json_list[row].get('hop') == json_list[row + 1].get('hop'):
-        #             json_list.remove(json_list[row])
-        #     except:
-        #         pass
-
+        for row in range(0, len(json_list) + 1):
+            try:
+                if json_list[row].get('hop') == json_list[row + 1].get('hop'):
+                    json_list.remove(json_list[row])
+            except:
+                pass
         
-        # #Removing extra entries json_list_all
+        #Removing extra entries json_list_all
 
-        # for row in range(0, len(json_list_all) + 1):
-        #     try:
-        #         if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
-        #             json_list_all.remove(json_list_all[row])
-        #     except:
-        #         pass
+        for row in range(0, len(json_list_all) + 1):
+            try:
+                if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
+                    json_list_all.remove(json_list_all[row])
+            except:
+                pass
 
-        # for row in range(0, len(json_list_all) + 1):
-        #     try:
-        #         if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
-        #             json_list_all.remove(json_list_all[row])
-        #     except:
-        #         pass
+        for row in range(0, len(json_list_all) + 1):
+            try:
+                if json_list_all[row].get('hop') == json_list_all[row + 1].get('hop'):
+                    json_list_all.remove(json_list_all[row])
+            except:
+                pass
 
 
     print('')
@@ -323,17 +328,14 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
     #Creating boxplot for the average values for each number of hops each time traceroute was run
 
     raw_data = pd.read_json(dest1)
-
-    raw_data.head()
-
     df = raw_data [['hop','avg']]
-
     df_all = pd.DataFrame()
 
-    raw_data.head(100)
+    # raw_data.head(100)
 
     for hops in range(1, df.hop.max() + 1):
         df_by_hops = df[df.hop == hops][['avg']]
+
         if df_by_hops.empty != True:
             tmplist=[]
             for row in range(0, len(df_by_hops)):
@@ -345,7 +347,6 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
                     count = count + 1
                 for times in range(0, num_times_run-count):
                     tmplist.append(None)
-                
             
             df_all[str(hops) + " hop(s)"] = tmplist
 
@@ -367,7 +368,6 @@ def trtstats(NUM_RUNS, RUN_DELAY, MAX_HOPS, OUTPUT, GRAPH, TARGET, TEST_DIR ):
     df_all_lats = pd.DataFrame()
 
     hops_list = []
-
 
     for row in range(0, len(raw_data)):
         
